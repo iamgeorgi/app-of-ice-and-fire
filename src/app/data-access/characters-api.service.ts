@@ -1,6 +1,7 @@
 import { HttpClient, HttpParams } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
+import { Character } from "../components/charcter.model";
 
 @Injectable({ providedIn: 'root' })
 export class CharactersApiService {
@@ -8,12 +9,12 @@ export class CharactersApiService {
 
     constructor(private http: HttpClient) { }
 
-    loadCharacters(page: number, pageSize: number): Observable<any> {
+    loadCharacters(page: number, pageSize: number): Observable<Character[]> {
         const params = new HttpParams()
             .set('page', page)
             .set('pageSize', pageSize)
         
-        return this.http.get<any>(this.baseUrl, { params });
+        return this.http.get<Character[]>(this.baseUrl, { params });
     }
 
 }
