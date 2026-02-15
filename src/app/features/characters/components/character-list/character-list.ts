@@ -1,31 +1,19 @@
 import { AsyncPipe } from '@angular/common';
-import { Component } from '@angular/core';
-import { CharactersApiService } from '../../data-access/characters-api.service';
-import { map, Observable, tap } from 'rxjs';
+import { Component, inject, OnInit } from '@angular/core';
 import { CharacterCard } from '../character-card/character-card';
-import { CharacterCardModel } from '../../../../shared/models/charcter.model';
+import { CharactersFacade } from '../../store/characters.facade';
 
 @Component({
   selector: 'app-character-list',
-  imports: [AsyncPipe, CharacterCard],
+  imports: [CharacterCard],
   templateUrl: './character-list.html',
   styleUrl: './character-list.css',
 })
-export class CharacterList {
-  characters$?: Observable<CharacterCardModel[]>;
-  constructor(private charactersService: CharactersApiService) { }
+export class CharacterList implements OnInit {
+  private charactersFacade = inject(CharactersFacade)
+  readonly characters = this.charactersFacade.characters;
 
   ngOnInit(): void {
-    this.characters$ = this.charactersService.loadCharacters(1, 25).pipe(
-      map((characters) =>
-        characters.map((c): CharacterCardModel => ({
-          url: c.url,
-          name: c.name || c.aliases?.[0]?.trim() || 'Unknown',
-          gender: c.gender,
-          culture: c.culture,
-          born: c.born
-        }))
-      )
-    );
+    this.charactersFacade.loadCharacters(1, 25);
   }
 }

@@ -1,0 +1,18 @@
+import { Store } from "@ngrx/store";
+import { CharactersState } from "./characters.state";
+import { inject, Injectable } from "@angular/core";
+import { charactersFeature } from "./characters.reducer";
+import { charactersActions } from "./characters.actions";
+
+@Injectable({ providedIn: "root" })
+export class CharactersFacade {
+    private readonly store = inject<Store<CharactersState>>(Store);
+
+    readonly characters = this.store.selectSignal(charactersFeature.selectCharacters);
+    readonly isLoading = this.store.selectSignal(charactersFeature.selectIsLoading);
+    readonly error = this.store.selectSignal(charactersFeature.selectError);
+
+    loadCharacters(page = 1, pageSize = 25) {
+        this.store.dispatch(charactersActions.loadCharacters({ page, pageSize }));
+    }
+}

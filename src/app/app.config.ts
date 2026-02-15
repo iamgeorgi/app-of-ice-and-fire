@@ -3,9 +3,11 @@ import { provideRouter } from '@angular/router';
 
 import { routes } from './app.routes';
 import { provideHttpClient } from '@angular/common/http';
-import { provideStore } from '@ngrx/store';
+import { provideState, provideStore } from '@ngrx/store';
 import { provideEffects } from '@ngrx/effects';
 import { provideStoreDevtools } from '@ngrx/store-devtools';
+import { charactersFeature } from './features/characters/store/characters.reducer';
+import { CharactersEffects } from './features/characters/store/characters.effects';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -13,7 +15,8 @@ export const appConfig: ApplicationConfig = {
     provideRouter(routes),
     provideHttpClient(),
     provideStore(),
-    provideEffects(),
+    provideState(charactersFeature),
+    provideEffects([CharactersEffects]),
     provideStoreDevtools({ maxAge: 25, logOnly: !isDevMode() })
 ]
 };
