@@ -2,8 +2,8 @@ import { AsyncPipe } from '@angular/common';
 import { Component } from '@angular/core';
 import { CharactersApiService } from '../../data-access/characters-api.service';
 import { map, Observable, tap } from 'rxjs';
-import { CharacterCard } from "../character-card/character-card";
-import { CharacterCardModel } from '../charcter.model';
+import { CharacterCard } from '../character-card/character-card';
+import { CharacterCardModel } from '../../../../components/charcter.model';
 
 @Component({
   selector: 'app-character-list',
