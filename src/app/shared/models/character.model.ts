@@ -1,9 +1,11 @@
 export interface CharacterCardModel {
+    id: string;
     url: string;
-    name?: string,
+    name: string,
     gender: string,
     culture: string,
-    born: string
+    born: string,
+    aliases: string[],
 }
 
 export interface Character {

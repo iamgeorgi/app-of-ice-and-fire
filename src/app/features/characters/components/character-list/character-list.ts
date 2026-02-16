@@ -12,6 +12,8 @@ import { CharactersFacade } from '../../store/characters.facade';
 export class CharacterList implements OnInit {
   private charactersFacade = inject(CharactersFacade)
   readonly characters = this.charactersFacade.characters;
+  readonly isLoading = this.charactersFacade.isLoading;
+  readonly error = this.charactersFacade.error;
 
   ngOnInit(): void {
     this.charactersFacade.loadCharacters(1, 25);

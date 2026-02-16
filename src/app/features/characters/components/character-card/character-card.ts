@@ -1,5 +1,5 @@
 import { Component, input } from '@angular/core';
-import { CharacterCardModel } from '../../../../shared/models/charcter.model';
+import { CharacterCardModel } from '../../../../shared/models/character.model';
 
 @Component({
   selector: 'app-character-card',
@@ -8,5 +8,5 @@ import { CharacterCardModel } from '../../../../shared/models/charcter.model';
   styleUrl: './character-card.css',
 })
 export class CharacterCard {
-  character = input<CharacterCardModel>();
+  character = input.required<CharacterCardModel>();
 }

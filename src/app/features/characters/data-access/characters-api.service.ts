@@ -1,7 +1,7 @@
 import { HttpClient, HttpParams } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { Observable } from "rxjs";
-import { Character } from "../../../shared/models/charcter.model";
+import { Observable, throwError } from "rxjs";
+import { Character } from "../../../shared/models/character.model";
 
 @Injectable({ providedIn: 'root' })
 export class CharactersApiService {
@@ -14,6 +14,7 @@ export class CharactersApiService {
             .set('page', page)
             .set('pageSize', pageSize)
         
+        // return throwError("Error");
         return this.http.get<Character[]>(this.baseUrl, { params });
     }
 

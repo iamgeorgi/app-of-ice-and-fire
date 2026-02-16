@@ -1,4 +1,4 @@
-import { Character } from "../../../shared/models/charcter.model";
+import { Character } from "../../../shared/models/character.model";
 
 export type CharactersState = {
     characters: Character[];
