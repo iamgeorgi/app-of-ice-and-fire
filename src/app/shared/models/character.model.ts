@@ -1,5 +1,4 @@
 export interface CharacterCardModel {
-    id: string;
     url: string;
     name: string,
     gender: string,
