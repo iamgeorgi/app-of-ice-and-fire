@@ -1,0 +1,5 @@
+@if(favoriteCharacters().length <= 0) {
+    <h1>No favorite characters yet...</h1>
+}
+
+<app-character-list [characters]="favoriteCharacters()" (toggleFavorite)="onToggleFavorites($event)"></app-character-list>
