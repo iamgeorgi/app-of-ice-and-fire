@@ -1,9 +1,0 @@
-@if(isLoading()) {
-    <h1>Curently loading....</h1>
-}
-@if(error()) {
-    <h1>Error</h1>
-}
-@for (character of characters(); track character.url) {
-    <app-character-card [character]="character"></app-character-card>
-}

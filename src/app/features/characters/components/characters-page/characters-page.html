@@ -1,0 +1,8 @@
+@if(isLoading()) {
+    <h1>Curently loading....</h1>
+}
+@if(error()) {
+    <h1>Error</h1>
+}
+
+<app-character-list [characters]="characters()" (toggleFavorite)="onToggleFavorites($event)"></app-character-list>

@@ -1,0 +1,3 @@
+@for (character of characters(); track character.url) {
+    <app-character-card [character]="character" (toggleFavorite)="toggleFavorite.emit($event)"></app-character-card>
+}
