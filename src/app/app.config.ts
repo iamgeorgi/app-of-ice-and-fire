@@ -8,6 +8,7 @@ import { provideEffects } from '@ngrx/effects';
 import { provideStoreDevtools } from '@ngrx/store-devtools';
 import { charactersFeature } from './features/characters/store/characters.reducer';
 import { CharactersEffects } from './features/characters/store/characters.effects';
+import { favoritesFeature } from './features/favorites/store/favorites.reducer';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -16,6 +17,7 @@ export const appConfig: ApplicationConfig = {
     provideHttpClient(),
     provideStore(),
     provideState(charactersFeature),
+    provideState(favoritesFeature),
     provideEffects([CharactersEffects]),
     provideStoreDevtools({ maxAge: 25, logOnly: !isDevMode() })
 ]

@@ -1,4 +1,3 @@
-import { AsyncPipe } from '@angular/common';
 import { Component, inject, OnInit } from '@angular/core';
 import { CharacterCard } from '../character-card/character-card';
 import { CharactersFacade } from '../../store/characters.facade';
@@ -10,8 +9,8 @@ import { CharactersFacade } from '../../store/characters.facade';
   styleUrl: './character-list.css',
 })
 export class CharacterList implements OnInit {
-  private charactersFacade = inject(CharactersFacade)
-  readonly characters = this.charactersFacade.characters;
+  private charactersFacade = inject(CharactersFacade);
+  readonly characters = this.charactersFacade.characterCards;
   readonly isLoading = this.charactersFacade.isLoading;
   readonly error = this.charactersFacade.error;
 

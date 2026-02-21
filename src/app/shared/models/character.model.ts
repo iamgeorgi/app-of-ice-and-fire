@@ -4,7 +4,7 @@ export interface CharacterCardModel {
     gender: string,
     culture: string,
     born: string,
-    aliases: string[],
+    favorite: boolean,
 }
 
 export interface Character {
