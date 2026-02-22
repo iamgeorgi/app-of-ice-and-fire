@@ -10,10 +10,13 @@ export const charactersFeature = createFeature({
             ...state,
             isLoading: true,
         })),
-        on(charactersActions.loadCharactersSuccess, (state, { characters }) => ({
+        on(charactersActions.loadCharactersSuccess, (state, { characters, page, pageSize }) => ({
             ...state,
-            characters: [...characters],
+            characters: [...state.characters, ...characters],
+            page: page,
+            pageSize: pageSize,
             isLoading: false,
+            hasMore: characters.length > 0,
         })),
         on(charactersActions.loadCharactersError, (state, { error }) => ({
             ...state,

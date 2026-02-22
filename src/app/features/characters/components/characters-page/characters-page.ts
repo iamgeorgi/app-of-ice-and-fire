@@ -18,10 +18,14 @@ export class CharactersPage {
   readonly error = this.charactersFacade.error;
 
   ngOnInit(): void {
-    this.charactersFacade.loadCharacters(1, 25);
+    this.charactersFacade.loadCharacters();
   }
 
   onToggleFavorites(url: string) {
     this.favoritesFacade.addToFavorites(url);
+  }
+
+  loadMore() {
+    this.charactersFacade.loadMore();
   }
 }

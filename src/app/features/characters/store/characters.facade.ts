@@ -11,11 +11,15 @@ export class CharactersFacade {
 
     readonly characters = this.store.selectSignal(charactersFeature.selectCharacters);
     readonly characterCards = this.store.selectSignal(selectCharacterCards);
+    readonly hasMore = this.store.selectSignal(charactersFeature.selectHasMore);
     readonly isLoading = this.store.selectSignal(charactersFeature.selectIsLoading);
     readonly error = this.store.selectSignal(charactersFeature.selectError);
 
-    loadCharacters(page = 1, pageSize = 25) {
+    loadCharacters(page = 1, pageSize = 15) {
         this.store.dispatch(charactersActions.loadCharacters({ page, pageSize }));
     }
-    
+
+    loadMore() {
+        this.store.dispatch(charactersActions.loadMore());
+    }
 }

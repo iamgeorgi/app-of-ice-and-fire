@@ -1,8 +1,14 @@
 @if(isLoading()) {
-    <h1>Curently loading....</h1>
+<h1>Curently loading....</h1>
 }
 @if(error()) {
-    <h1>Error</h1>
+<h1>Error</h1>
 }
 
 <app-character-list [characters]="characters()" (toggleFavorite)="onToggleFavorites($event)"></app-character-list>
+
+<div class="mt-6">
+    <button (click)="loadMore()" class="w-full rounded-xl bg-rose-600 px-4 py-3 text-white font-medium disabled:opacity-50">
+        Load more 
+    </button>
+</div>
